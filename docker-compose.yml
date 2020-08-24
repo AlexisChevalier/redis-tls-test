@@ -1,0 +1,15 @@
+version: '2.4'
+
+services:
+  redis:
+    image: bitnami/redis:6.0.5
+    environment:
+      REDIS_PASSWORD: password
+      REDIS_TLS_ENABLED: "yes"
+      REDIS_TLS_CERT_FILE: /usr/local/etc/redis/tls/redis.crt
+      REDIS_TLS_KEY_FILE: /usr/local/etc/redis/tls/redis.key
+      REDIS_TLS_CA_FILE: /usr/local/etc/redis/tls/ca.crt
+    volumes:
+      - ./tests/tls:/usr/local/etc/redis/tls
+    ports:
+      - '6379:6379'
